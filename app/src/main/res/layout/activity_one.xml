@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".one">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ABOUT COLLEGE"
+          android:layout_gravity="center_horizontal"
+            android:textColor="#FF69B4"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Established under Gujarat Private University(Amendment) Act No. 25 - 2011 Government of Gujarat and approved under section 22 of UGC Act 1956."
+    android:layout_margin="5dp"
+    android:id="@+id/l1"
+android:textColor="#000000"
+    android:padding="7dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/l1"
+            android:id="@+id/l2"
+            android:text="Uka Tarsadia University Campus is on the Bardoli-Mahuva road. It is about 7 kilometers from Bardoli and 35 kilometers from Surat."
+            android:layout_margin="5dp"
+            android:textColor="#000000"
+            android:padding="7dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l2"
+        android:id="@+id/l3"
+        android:text=" To serve the society by creation, augmentation, dissemination and perpetuation of knowledge through highest level of learning and research."
+        android:layout_margin="5dp"
+        android:textColor="#000000"
+        android:padding="7dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l3"
+        android:id="@+id/l4"
+        android:text="To become a preeminent education hub that is responsive to the changing needs of a knowledge-based global society."
+        android:layout_margin="5dp"
+        android:textColor="#000000"
+        android:padding="7dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l4"
+        android:id="@+id/l5"
+        android:text="To impart holistic education in the context of dynamic global challenges.\n
+\nTo mobilize resources which promote acquisition, retention and application of knowledge.\n
+\nTo provide a platform for economic development through collaboration with academic institutes and industries."
+        android:layout_margin="5dp"
+        android:textColor="#000000"
+        android:padding="7dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l5"
+        android:text="- Fastest growing university in Gujarat with over 9500 + students.\n
+
+       \n - Nationally accredited courses reflective of current trends and societal needs.\n
+     \n - Eco-friendly and ergonomically designed infrastructure.\n
+
+       \n- Fully Wi-Fi campus with free-of-cost access\n
+
+       \n- High premium on all round development of students\n
+
+        \n- Best in class hostel facilities with all avenues of learning and recreation\n
+        \n- Job fair and campus placement with very high success ratio.\n
+
+        \n- Scholarships to needy and meritorious students\n
+
+        \n- Three spacious auditoriums with multi-media facilities\n"
+        android:layout_margin="5dp"
+        android:id="@+id/l6"
+        android:textColor="#000000"
+        android:padding="7dp"/>
+
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>
+
