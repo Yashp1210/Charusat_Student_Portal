@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AttendanceActivity">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attendance"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+    <TableLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/tv1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+    <TableRow>
+        <TextView
+            android:text="Subject"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:padding="3dip" />
+        <TextView
+            android:text="Present Percentage"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Advanced web Development"
+            android:padding="3dip" />
+        <TextView
+            android:id="@+id/pp1"
+            android:text="100%"
+            android:gravity="left"
+            android:padding="3dip" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Information Security"
+            android:padding="3dip" />
+        <TextView
+            android:text="100%"
+            android:id="@+id/pp2"
+
+            android:gravity="left"
+            android:padding="3dip" />
+    </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="Programming with Python"
+                android:padding="3dip" />
+            <TextView
+                android:text="100%"
+                android:id="@+id/pp3"
+
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Cloud Infrastructure"
+                android:padding="3dip" />
+            <TextView
+                android:text="100%"
+                android:id="@+id/pp4"
+
+                android:gravity="left"
+                android:padding="3dip" />
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

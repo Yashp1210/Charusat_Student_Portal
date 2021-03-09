@@ -31,7 +31,7 @@ public class MessageActivity extends AppCompatActivity {
 
     ImageView rImage,rImage1;
     ProgressBar progressBar;
-    TextView txt1;
+    TextView txt1,txt2;
 
 
     @Override
@@ -43,17 +43,14 @@ public class MessageActivity extends AppCompatActivity {
         rImage1 = findViewById(R.id.rImage1);
         progressBar = findViewById(R.id.progressBar);
         txt1 = findViewById(R.id.txt1);
-
+        txt2 = findViewById(R.id.txt2);
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
         DatabaseReference getImage = databaseReference.child("image");
-
         DatabaseReference getImage1 = databaseReference.child("image1");
         progressBar.setVisibility(View.VISIBLE);
-
-        databaseReference= firebaseDatabase.getReference("Data");
 
 
         rImage1.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +105,9 @@ public class MessageActivity extends AppCompatActivity {
                 Toast.makeText(MessageActivity.this, "Error Loading Image", Toast.LENGTH_SHORT).show();
             }
         });
+        databaseReference= firebaseDatabase.getReference("Date");
         databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // this method is call to get the realtime
@@ -122,6 +121,31 @@ public class MessageActivity extends AppCompatActivity {
                 // after getting the value we are setting
                 // our value to our text view in below line.
                 txt1.setText(value);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // calling on cancelled method when we receive
+                // any error or we are not able to get the data.
+                Toast.makeText(MessageActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        databaseReference= firebaseDatabase.getReference("Date1");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // this method is call to get the realtime
+                // updates in the data.
+                // this method is called when the data is
+                // changed in our Firebase console.
+                // below line is for getting the data from
+                // snapshot of our database.
+                String value = snapshot.getValue(String.class);
+
+                // after getting the value we are setting
+                // our value to our text view in below line.
+                txt2.setText(value);
             }
 
             @Override

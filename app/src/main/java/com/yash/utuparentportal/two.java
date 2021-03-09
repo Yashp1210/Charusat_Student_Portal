@@ -26,40 +26,7 @@ public class two extends AppCompatActivity implements View.OnClickListener {
                 car2.setOnClickListener(this);
                 car3.setOnClickListener(this);
                 car4.setOnClickListener(this);
-                // Toolbar toolbar = findViewById(R.id.toolbar);
-                //setSupportActionBar(toolbar);
-                //getSupportActionBar().setTitle("Uka Tarsadia University");
-
-
-                BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
-                bottomNavigationView.setSelectedItemId(R.id.college);
-
-                bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                        switch (menuItem.getItemId()) {
-                            case R.id.college:
-                                return true;
-
-                            case R.id.parent:
-                                startActivity(new Intent(getApplicationContext(), ParentActivity.class));
-                                overridePendingTransition(0, 0);
-                                return true;
-
-                            case R.id.message:
-                                startActivity(new Intent(getApplicationContext(), MessageActivity.class));
-                                overridePendingTransition(0, 0);
-                                return true;
-                        }
-                        return false;
-                    }
-                });
-
-
             }
-
-
             @Override
             public void onClick (View v){
                 Intent i;

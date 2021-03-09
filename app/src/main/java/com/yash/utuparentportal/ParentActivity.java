@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.concurrent.TimeUnit;
 
@@ -146,13 +148,13 @@ public class ParentActivity extends AppCompatActivity {
                 .addOnCompleteListener(ParentActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful() ) {
                             sendUserToHome();
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getApplicationContext(),"There was an Error while Verifying OTP",Toast.LENGTH_SHORT).show();
-
                             }
+
                         }
                         mGenerateBtn.setEnabled(true);
                         mLoginProgress.setVisibility(View.INVISIBLE);

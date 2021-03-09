@@ -1,23 +1,36 @@
 package com.yash.utuparentportal;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class HomeActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentuser;
-    private Button mLogoutBtn;
+    private TextView name,enrollment_no,department;
+    private ImageView image;
+    private FirebaseFirestore fStore;
+    private String userId;
+    private CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +39,32 @@ public class HomeActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mCurrentuser = mAuth.getCurrentUser();
-        mLogoutBtn = findViewById(R.id.btn);
+        name = findViewById(R.id.tv2);
+        enrollment_no = findViewById(R.id.tv3);
+        department = findViewById(R.id.tv4);
+        fStore = FirebaseFirestore.getInstance();
+        image = findViewById(R.id.iv1);
+        cardView = findViewById(R.id.cv);
 
-        mLogoutBtn.setOnClickListener(new View.OnClickListener() {
+        userId = mAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Users").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                name.setText(documentSnapshot.getString("Name"));
+                enrollment_no.setText(documentSnapshot.getString("Enrollment Number"));
+                department.setText(documentSnapshot.getString("Department"));
+            }
+        });
+
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mAuth.signOut();
-                sendUserToLogin();
+                Intent homeIntent = new Intent(HomeActivity.this,MainActivity2.class);
+                startActivity(homeIntent);
+                finish();
+
             }
         });
 

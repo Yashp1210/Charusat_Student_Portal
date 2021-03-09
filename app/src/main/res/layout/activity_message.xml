@@ -9,18 +9,27 @@
         android:layout_height="200dp"
         android:id="@+id/rImage"
         android:layout_marginTop="20dp" />
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/txt1"
-    android:text="------------------------------------------------------------------------------------------"/>
+
     <TextView
         android:id="@+id/txt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text=""
+
+
         android:layout_below="@+id/rImage"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:layout_below="@+id/rImage1"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -29,6 +38,7 @@
     <ImageView
         android:layout_below="@id/txt1"
         android:layout_width="match_parent"
+
 
         android:layout_height="200dp"
         android:id="@+id/rImage1"

@@ -36,14 +36,23 @@ public class ImageActivity extends AppCompatActivity {
 
                 String link = dataSnapshot.getValue(String.class);
                 Picasso.get().load(link).into(rImage);
-            }
 
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 Toast.makeText(ImageActivity.this, "Error Loading Image", Toast.LENGTH_SHORT).show();
 
             }
+
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(ImageActivity.this,MessageActivity.class);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(homeIntent);
+        finish();
     }
 }

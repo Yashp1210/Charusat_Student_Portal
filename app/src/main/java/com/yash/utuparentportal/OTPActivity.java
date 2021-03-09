@@ -1,4 +1,4 @@
- package com.yash.utuparentportal;
+package com.yash.utuparentportal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +21,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class OTPActivity extends AppCompatActivity {
 
@@ -29,6 +33,8 @@ public class OTPActivity extends AppCompatActivity {
     private EditText mOtpText;
     private Button mVerifyBtn;
     private ProgressBar mOtpProgress;
+   
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class OTPActivity extends AppCompatActivity {
 
         mVerifyBtn = findViewById(R.id.btn);
         mOtpText = findViewById(R.id.et1);
+
+
 
         mVerifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +67,8 @@ public class OTPActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -68,9 +78,7 @@ public class OTPActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             sendUserToHome();
-
                         } else {
-
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getApplicationContext(),"There was an Error while Verification",Toast.LENGTH_SHORT).show();
                             }
@@ -97,6 +105,11 @@ public class OTPActivity extends AppCompatActivity {
         startActivity(homeIntent);
         finish();
     }
+
+
+
+
+
 
 
 }
