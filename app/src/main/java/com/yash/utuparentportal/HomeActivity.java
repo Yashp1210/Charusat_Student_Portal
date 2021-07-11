@@ -7,20 +7,27 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.common.hash.HashingOutputStream;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.jar.Attributes;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,27 +53,37 @@ public class HomeActivity extends AppCompatActivity {
         image = findViewById(R.id.iv1);
         cardView = findViewById(R.id.cv);
 
-        userId = mAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fStore.collection("Users").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                name.setText(documentSnapshot.getString("Name"));
-                enrollment_no.setText(documentSnapshot.getString("Enrollment Number"));
-                department.setText(documentSnapshot.getString("Department"));
-            }
-        });
+        
+            userId = mAuth.getCurrentUser().getUid();
+            DocumentReference documentReference = fStore.collection("Users").document(userId);
+            documentReference.addSnapshotListener(this,new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot,@NonNull FirebaseFirestoreException e) {
+                    if(documentSnapshot.exists()){
+                        name.setText(documentSnapshot.getString("Name"));
+                        enrollment_no.setText(documentSnapshot.getString("Enrollment Number"));
+                        department.setText(documentSnapshot.getString("Department"));
+                    }else{
+                        Intent homeIntent = new Intent(HomeActivity.this, MainActivity3.class);
+                        startActivity(homeIntent);
+                        finish();
+                    }
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent homeIntent = new Intent(HomeActivity.this,MainActivity2.class);
-                startActivity(homeIntent);
-                finish();
+                }
+            });
 
-            }
-        });
+    cardView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Intent homeIntent = new Intent(HomeActivity.this, MainActivity2.class);
+            startActivity(homeIntent);
+            finish();
+
+        }
+    });
+
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.parent);

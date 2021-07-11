@@ -18,6 +18,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.auth.User;
+import com.google.gson.JsonObject;
+import com.razorpay.Checkout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -28,7 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
     private FirebaseUser mCurrentuser;
     private FirebaseFirestore fStore;
     private String userId;
-    private CardView Attendence,timetable,exammarks,syllabus,remarks,event_calender;
+    private CardView Attendence,timetable,exammarks,syllabus,remarks,event_calender,feespayment;
 
 
     @Override
@@ -51,6 +57,18 @@ public class MainActivity2 extends AppCompatActivity {
         syllabus = findViewById(R.id.cv5);
         remarks = findViewById(R.id.cv4);
         event_calender = findViewById(R.id.cv6);
+        feespayment = findViewById(R.id.cv7);
+
+
+
+        feespayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(MainActivity2.this,FeesPaymentActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
 
         event_calender.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +135,7 @@ public class MainActivity2 extends AppCompatActivity {
                 name.setText(documentSnapshot.getString("Name"));
                 enrollment_no.setText(documentSnapshot.getString("Enrollment Number"));
                 department.setText(documentSnapshot.getString("Department"));
+
 
 
 

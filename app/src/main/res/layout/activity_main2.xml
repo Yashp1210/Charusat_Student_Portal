@@ -65,11 +65,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
-        android:layout_below="@+id/iv1"
+        android:layout_below="@+id/cv7"
         android:background="#ffffff"
         android:textColor="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="440dp"/>
+        android:layout_marginTop="50dp"/>
 
 
     <androidx.cardview.widget.CardView
@@ -191,6 +191,26 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/eventcalender" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv7"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/cv6"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Fees Payment"
+            android:textSize="22dp"
+            android:layout_marginLeft="50dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/feespayment" />
     </androidx.cardview.widget.CardView>
 
 

@@ -7,10 +7,55 @@
     tools:context=".MainActivity3">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No student record found linked to this mobilenumber."
+        android:layout_margin="30dp"
+        android:id="@+id/id1"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/id1"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/id2"
+        android:layout_marginRight="30dp"
+        android:layout_height="wrap_content"
+        android:text="You must register with the same number you
+provided to the institute.go to Setting menu to reset mobile number"/>
+
+    <TextView
+        android:layout_below="@id/id2"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(if you are using correct number and still
+having\n problem with registering,please contact the
+administration.)"/>
+
+
+    <Button
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:layout_centerInParent="true"
-        android:text="Unauthorize user"/>
+        android:text="Logout"
+        android:layout_below="@+id/iv1"
+        android:background="#ffffff"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="440dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-5dp"
+        android:background="#4a148c"
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"/>
 
 </RelativeLayout>

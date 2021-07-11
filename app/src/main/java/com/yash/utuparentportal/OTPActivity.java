@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +34,6 @@ public class OTPActivity extends AppCompatActivity {
     private EditText mOtpText;
     private Button mVerifyBtn;
     private ProgressBar mOtpProgress;
-   
 
 
     @Override
@@ -48,6 +48,7 @@ public class OTPActivity extends AppCompatActivity {
 
         mVerifyBtn = findViewById(R.id.btn);
         mOtpText = findViewById(R.id.et1);
+
 
 
 
@@ -77,7 +78,9 @@ public class OTPActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            sendUserToHome();
+
+                                sendUserToHome();
+
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getApplicationContext(),"There was an Error while Verification",Toast.LENGTH_SHORT).show();
@@ -105,6 +108,8 @@ public class OTPActivity extends AppCompatActivity {
         startActivity(homeIntent);
         finish();
     }
+
+
 
 
 
